@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # displays content of the current dir in list format & only the name part after first dash
 
-for i in $( ls -1 | cut -f2 -d'-' )
+for i in $( find . | cut -f2 -d'-' | cut -f2 -d'/' )
 do
-   echo "${i}"
+   echo "${i%%.}"
 done
