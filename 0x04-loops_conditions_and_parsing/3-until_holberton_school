@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # This script is displaying "Holberton School" 10 times using until
-c=1
+c=0
 until [ $c == 10 ]
 do
    echo "Holberton School"
