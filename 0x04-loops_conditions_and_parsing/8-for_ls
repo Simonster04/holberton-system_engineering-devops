@@ -3,5 +3,5 @@
 
 for i in $( ls -1 | cut -f2 -d'-' )
 do
-   echo ${i}
+   echo "${i}"
 done
