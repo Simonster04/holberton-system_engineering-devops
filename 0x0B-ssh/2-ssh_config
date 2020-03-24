@@ -1,4 +1,7 @@
 # SSH configuration file for the local SSH client
+#    OpenSSH allows you to set up a per-user configuration
+#    file where you can store different SSH options for each
+#    remote machine you connect to.
 
 Host *
     PasswordAuthentication no
