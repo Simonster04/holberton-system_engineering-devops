@@ -2,13 +2,13 @@
 
 file_line {'IdentityFile':
   ensure => present,
-  path   => '~/.ssh/config',
+  path   => '/etc/ssh/config',
   line   => 'IdentityFile ~/.ssh/holberton',
 }
 
 file_line {'PasswordAuthentication':
   ensure => present,
-  path   => '~/.ssh/config',
+  path   => '/etc/ssh/config',
   line   => 'PasswordAuthentication no',
   match  => 'PasswordAuthentication yes',
 }
