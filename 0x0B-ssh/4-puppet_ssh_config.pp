@@ -3,6 +3,6 @@
 file_line {'SSH_conf_file':
   ensure => present,
   path   => '~/.ssh/config',
-  line   => '    PasswordAuthentication no',
-  match  => '^    PasswordAuthentication',
+  line   => 'PasswordAuthentication no',
+  match  => 'PasswordAuthentication yes',
 }
