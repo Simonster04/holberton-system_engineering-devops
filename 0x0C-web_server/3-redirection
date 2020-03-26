@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#Bash script that configures a new Ubuntu machine to:
+#   install nginx on your web-01 server
+#   Nginx should be listening on port 80
+#   When querying Nginx at its root / with a GET request using curl,
+#   it must return a page that contains the string Holberton School
+#   /redirect_me is redirecting to another page
+#   The redirection must be a “301 Moved Permanently”
+
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo chmod 777 /var/www/html/index.nginx-debian.html
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+sudo service nginx start
+sudo chmod 777 /etc/nginx/sites-available/default
+new_string="\\\trewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;"
+sudo sed -i "19i $new_string" /etc/nginx/sites-available/default
+sudo service nginx restart
+sudo service nginx reload
