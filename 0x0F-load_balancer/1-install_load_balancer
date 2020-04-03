@@ -5,6 +5,6 @@
 
 sudo apt-get -y update
 sudo apt-get -y install haproxy
-sed -i "$ a \nfrontend Local_Server\n    bind *:80\n    mode http\n    default_backend My_Web_Servers\n" /etc/haproxy/haproxy.cfg
+sed -i "$ a \\\nfrontend Local_Server\n    bind *:80\n    mode http\n    default_backend My_Web_Servers\n" /etc/haproxy/haproxy.cfg
 sed -i "$ a backend My_Web_Servers\n    mode http\n    balance roundrobin\n    option httpclose\n    option forwardfor\n    server 1248-web-01 104.196.213.138:80 check\n    server 1248-web-02 3.80.49.75:80 check" /etc/haproxy/haproxy.cfg
 sudo service haproxy start
