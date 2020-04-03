@@ -6,19 +6,16 @@
 sudo apt-get -y update
 sudo apt-get -y install haproxy
 
-sudo echo "Set ENABLED to 1 if you want the init script to start haproxy.
-ENABLED=1" >> /etc/default/haproxy
+sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 
-sudo echo "frontend site_front
+sudo echo "frontend Local_Server
 	bind *:80
-	default_backend site_back
+	default_backend My_Web_Servers
 " >> /etc/haproxy/haproxy.cfg
 
-sudo echo "backend site_back
+sudo echo "backend My_Web_Servers
 	balance roundrobin
-	mode tcp
 	server 1248-web-01 104.196.213.138:80 check
-	server 1248-web-02 3.80.40.75:80 check
-" >> /etc/haproxy/haproxy.cfg
+	server 1248-web-02 3.80.40.75:80 check" >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
