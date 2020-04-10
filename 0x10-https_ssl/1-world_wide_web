@@ -3,10 +3,10 @@
 
 display_ ()
 {
-    dig "$subdom.$1" | awk '/ANSWER SECTION/{getline; printf "The subdomain %s is a %s record and points to %s\n", subd, $4, $5}' subd="$subdom"
+    dig "$subdom.$1" | awk '/ANSWER SECTION:/{getline; printf "The subdomain %s is a %s record and points to %s\n", subd, $4, $5}' subd="$subdom"
 }
 
-for subdom in "www" "web-01" "web-02" "lb-01"
+for subdom in "www" "lb-01" "web-01" "web-02"
 do
     if [ -z "$2" ] || [ "$2" == "$subdom" ] ;
     then
