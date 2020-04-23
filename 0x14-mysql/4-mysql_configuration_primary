@@ -1,0 +1,53 @@
+#
+# The MySQL database server configuration file.
+#
+# You can copy this to one of:
+# - "/etc/mysql/my.cnf" to set global options,
+# - "~/.my.cnf" to set user-specific options.
+
+# Here is entries for some specific programs
+# The following values assume you have at least 32M ram
+
+[mysqld_safe]
+socket          = /var/run/mysqld/mysqld.sock
+nice            = 0
+
+[mysqld]
+# * Basic Settings
+user            = mysql
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+port            = 3306
+basedir         = /usr
+datadir         = /var/lib/mysql
+tmpdir          = /tmp
+lc-messages-dir = /usr/share/mysql
+skip-external-locking
+
+# * Fine Tuning
+key_buffer_size         = 16M
+max_allowed_packet      = 16M
+thread_stack            = 192K
+thread_cache_size       = 8
+
+# Replaces startup script and checks MyISAM tables if needed
+myisam-recover-options  = BACKUP
+
+# * Query cache configuration
+query_cache_limit       = 1M
+query_cache_size        = 16M
+
+# * Logging and Replication
+# Error log
+log_error = /var/log/mysql/error.log
+
+# For replication
+server-id               = 1
+log_bin                 = /var/log/mysql/mysql-bin.log
+expire_logs_days        = 10
+max_binlog_size         = 100M
+binlog_do_db            = tyrell_corp
+#binlog_ignore_db       = include_database_name
+
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mysql.conf.d/
