@@ -20,5 +20,5 @@ if __name__ == '__main__':
     with open('{}.csv'.format(userid), 'w', newline='') as csvfile:
         tasks = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         for task in todos:
-            tasks.writerow([int(userid), user.get('username'),
+            tasks.writerow([userid, user.get('username'),
                             task.get('completed'), task.get('title')])
