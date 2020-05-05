@@ -16,8 +16,9 @@ if __name__ == '__main__':
         'https://jsonplaceholder.typicode.com/todos?userId={}'
         .format(userid)).json()
 
+
     tasks = {'{}'.format(userid): [{'task': task.get('title'),
-                                    'completed': task.get('completes'),
+                                    'completed': task.get('completed'),
                                     'username': user.get('username')}
                                    for task in todos]}
     with open("{}.json".format(userid), 'w') as jsonfile:
