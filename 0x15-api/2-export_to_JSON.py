@@ -16,7 +16,6 @@ if __name__ == '__main__':
         'https://jsonplaceholder.typicode.com/todos?userId={}'
         .format(userid)).json()
 
-
     tasks = {'{}'.format(userid): [{'task': task.get('title'),
                                     'completed': task.get('completed'),
                                     'username': user.get('username')}
