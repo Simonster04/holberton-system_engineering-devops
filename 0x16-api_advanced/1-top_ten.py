@@ -12,7 +12,7 @@ def top_ten(subreddit):
                         headers={"User-Agent": "Simon & Lennox"},
                         allow_redirects=False,
                         params={'limit': 10}).json()
-    if hotp.get('error') == 404:
+    if 'error' in hotp:
         print(None)
     else:
         for post in hotp['data']['children']:
