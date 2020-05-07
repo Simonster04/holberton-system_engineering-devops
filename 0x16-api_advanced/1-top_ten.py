@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Contains top_ten() method """
 import requests
-from pprint import pprint
 
 
 def top_ten(subreddit):
@@ -11,9 +10,10 @@ def top_ten(subreddit):
                         .format(subreddit),
                         headers={"User-Agent": "Simon & Lennox"},
                         allow_redirects=False,
-                        params={'limit': 10}).json()
-    if 'error' in hotp:
+                        params={'limit': 10})
+    if hotp.status_code != 200:
         print(None)
     else:
+        hotp = hotp.json()
         for post in hotp['data']['children']:
             print(post['data']['title'])
