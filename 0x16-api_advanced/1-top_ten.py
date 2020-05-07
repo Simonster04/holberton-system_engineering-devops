@@ -10,9 +10,10 @@ def top_ten(subreddit):
     hotp = requests.get('https://www.reddit.com/r/{}/hot.json'
                         .format(subreddit),
                         headers={"User-Agent": "Simon & Lennox"},
-                        allow_redirects=False).json()
+                        allow_redirects=False,
+                        params={'limit': 10}).json()
     if hotp.get('error') == 404:
         print(None)
     else:
-        for i in range(10):
-            print(hotp['data']['children'][i]['data']['title'])
+        for post in hotp['data']['children']:
+            print(post['data']['title'])
