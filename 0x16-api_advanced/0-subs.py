@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ Contains number_of_subscribers() method """
-from pprint import pprint
 import requests
 
 
