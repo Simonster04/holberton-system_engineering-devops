@@ -11,7 +11,7 @@ def count_words(subreddit, word_list):
                         headers={"User-Agent": "Simon & Lennox"},
                         allow_redirects=False)
     if hotp.status_code != 200:
-        print()
+        return
     else:
         my_dict = {}
         hotp = hotp.json()
