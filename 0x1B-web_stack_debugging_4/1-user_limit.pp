@@ -3,5 +3,5 @@
 
 exec {'change-os-configuration-for-holberton-user':
   path    => ['/usr/bin', '/usr/sbin', '/bin'],
-  command => "sed -i 's/hard nofile 4/hard nofile 999999/g' /etc/security/limits.conf && sed -i 's/soft nofile /soft nofile 999999/g' /etc/security/limits.conf",
+  command => "sed -i 's/nofile 4/nofile 999999/g' /etc/security/limits.conf && sed -i 's/nofile /nofile 999999/g' /etc/security/limits.conf",
 }
